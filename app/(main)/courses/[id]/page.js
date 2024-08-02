@@ -1,3 +1,5 @@
+import { replaceMongoIdInArray } from "@/lib/convertData";
+import { getCourseDetails } from "@/queries/courses";
 import CourseDetails from "./_components/CourseDetails";
 import CourseDetailsIntro from "./_components/CourseDetailsIntro";
 import RelatedCourses from "./_components/RelatedCourses";
@@ -45,14 +47,21 @@ const courses = [
         thumbnail: "/assets/images/categories/music.jpg",
     },
 ];
-const SingleCoursePage = ({ params: { id } }) => {
+const SingleCoursePage = async ({ params: { id } }) => {
+    const course = await getCourseDetails(id);
+    console.log(course.testimonials);
+
     return (
         <>
-            <CourseDetailsIntro />
+            <CourseDetailsIntro
+                title={course?.title}
+                subtitle={course?.subtitle}
+                thumbnail={course?.thumbnail}
+            />
 
             <CourseDetails />
 
-            <Testimonials />
+            {course?.testimonials && <Testimonials testimonials={replaceMongoIdInArray(course?.testimonials)} />}
 
             <RelatedCourses />
         </>

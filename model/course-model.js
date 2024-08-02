@@ -3,45 +3,53 @@ import mongoose, { Schema } from "mongoose";
 const courseSchema = new Schema({
     title: {
         required: true,
-        type: String,
+        type: String
+    },
+    subtitle: {
+        required: true,
+        type: String
     },
     description: {
         required: true,
-        type: String,
+        type: String
     },
     thumbnail: {
         required: true,
-        type: String,
+        type: String
     },
-    modules: [
-        { type: Schema.ObjectId, ref: "Module" }
-    ],
+    modules: [{ type: Schema.ObjectId, ref: "Module" }],
+
     price: {
         required: true,
-        type: Number,
+        type: Number
     },
     active: {
         required: true,
-        type: Boolean,
+        type: Boolean
     },
 
-    category: {
-        type: Schema.ObjectId, ref: "Category"
+    category: { type: Schema.ObjectId, ref: "Category" },
+
+    instructor: { type: Schema.ObjectId, ref: "User" },
+
+    quizSet: { type: Schema.ObjectId, ref: "Quizset" },
+
+    testimonials: [{ type: Schema.ObjectId, ref: "Testimonial" }],
+
+    learning: {
+        required: true,
+        type: [String]
     },
 
-    instructor: {
-        type: Schema.ObjectId, ref: "User"
+    createdOn: {
+        required: true,
+        type: Date
     },
 
-    quizzes: {
-        required: false,
-        type: Schema.ObjectId,
-    },
-
-    testimonials: [{
-        type: Schema.ObjectId, ref: "Testimonial"
-    }],
+    modifiedOn: {
+        required: true,
+        type: Date
+    }
 });
 
-export const Course =
-    mongoose.models.Course ?? mongoose.model("Course", courseSchema);
+export const Course = mongoose.models.Course ?? mongoose.model("Course", courseSchema);
