@@ -49,7 +49,7 @@ const courses = [
 ];
 const SingleCoursePage = async ({ params: { id } }) => {
     const course = await getCourseDetails(id);
-    console.log(course.testimonials);
+    console.log(course.category.title);
 
     return (
         <>
@@ -59,7 +59,7 @@ const SingleCoursePage = async ({ params: { id } }) => {
                 thumbnail={course?.thumbnail}
             />
 
-            <CourseDetails />
+            <CourseDetails course={course} />
 
             {course?.testimonials && <Testimonials testimonials={replaceMongoIdInArray(course?.testimonials)} />}
 
