@@ -68,8 +68,8 @@ export async function getCourseDetailsByInstructor(instructorId) {
         })
     );
 
-    // const totalTestimonials = testimonials.flat();
-    console.log("testimonials", testimonials);
+    const totalTestimonials = testimonials.flat();
+    // console.log("testimonials", testimonials);
 
 
 
@@ -77,6 +77,6 @@ export async function getCourseDetailsByInstructor(instructorId) {
     return {
         "courses": courses.length,
         "enrollments": totalEnrollments,
-        // "reviews": totalTestimonials.length,
+        "reviews": totalTestimonials.length,
     }
 }
