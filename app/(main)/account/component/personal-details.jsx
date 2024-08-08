@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
+import { toast } from "sonner";
 
 
 const PersonalDetails = ({ userInfo }) => {
@@ -31,10 +32,10 @@ const PersonalDetails = ({ userInfo }) => {
 
         try {
             await updateUserInfo(userInfo?.email, infoState);
-            // toast.success("User details updated successfully.")
+            toast.success("User details updated successfully.")
         } catch (error) {
             console.error(error);
-            // toast.error(`Error: ${error.message}`)
+            toast.error(`Error: ${error.message}`)
         }
     }
 
