@@ -1,6 +1,5 @@
 import { auth } from "@/auth";
 import { getUserByEmail } from '@/queries/users';
-import Image from 'next/image';
 import { redirect } from "next/navigation";
 import Menu from './account-menu';
 
@@ -17,23 +16,11 @@ const AccountSidebar = async () => {
             <div className="relative">
                 <div className="p-6 rounded-md shadow dark:shadow-gray-800 bg-white dark:bg-slate-900">
                     <div className="profile-pic text-center mb-5">
-                        <input
-                            id="pro-img"
-                            name="profile-image"
-                            type="file"
-                            className="hidden"
-                            onchange="loadFile(event)"
-                        />
                         <div>
                             <div className="relative size-28 mx-auto">
-                                <Image
-                                    src={loggedInUser?.profilePicture}
-                                    className="rounded-full shadow dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800"
-                                    id="profile-banner"
-                                    alt="profile-image"
-                                    width={112}
-                                    height={112}
-                                />
+                                <div className="rounded-full w-28 h-28 bg-gray-900 text-white flex justify-center items-center">
+                                    <p className="text-5xl">{loggedInUser?.firstName?.charAt(0)}</p>
+                                </div>
                                 <label
                                     className="absolute inset-0 cursor-pointer"
                                     htmlFor="pro-img"
