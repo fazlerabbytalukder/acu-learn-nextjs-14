@@ -1,4 +1,5 @@
 import { replaceMongoIdInArray } from "@/lib/convertData";
+import { Course } from "@/model/course-model";
 import { Enrollment } from "@/model/enrollment-model";
 
 
@@ -10,11 +11,11 @@ export async function getEnrollmentsForCourse(courseId) {
 
 export async function getEnrollmentsForUser(userId) {
     try {
-        const enrollments = await Enrollment.find({ student: userId }).lean();
-        // .populate({
-        //     path: "course",
-        //     model: Course,
-        // }).lean();
+        const enrollments = await Enrollment.find({ student: userId })
+            .populate({
+                path: "course",
+                model: Course,
+            }).lean();
         return replaceMongoIdInArray(enrollments);
     } catch (err) {
         throw new Error(err);
