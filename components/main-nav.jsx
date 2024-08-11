@@ -27,6 +27,7 @@ export function MainNav({ items, children }) {
 
 	const [showMobileMenu, setShowMobileMenu] = useState(false);
 	const [loginSession, setLoginSession] = useState(null);
+	const [loggedInUser, setLoggedInUser] = useState(null);
 
 	// console.log(session);
 
@@ -37,6 +38,18 @@ export function MainNav({ items, children }) {
 	useEffect(() => {
 		// console.log("test");
 		setLoginSession(session);
+		async function fetchMe() {
+			try {
+				const response = await fetch("/api/me");
+				const data = await response.json();
+				console.log(data);
+				setLoggedInUser(data);
+			} catch (err) {
+				console.log(err);
+			}
+		}
+
+		fetchMe();
 	}, [session]);
 
 	return (
@@ -106,7 +119,7 @@ export function MainNav({ items, children }) {
 						<div className="cursor-pointer">
 							<Avatar>
 								<AvatarImage
-									src="https://github.com/shadcn.png"
+									src={loggedInUser?.profilePicture}
 									alt="@shadcn"
 								/>
 								<AvatarFallback>CN</AvatarFallback>
