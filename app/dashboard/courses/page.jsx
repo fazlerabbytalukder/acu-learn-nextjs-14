@@ -1,10 +1,10 @@
-import { getInstructorDashboardData } from "@/lib/dashboard-helper";
+import { COURSE_DATA, getInstructorDashboardData } from "@/lib/dashboard-helper";
 import { columns } from "./_components/columns";
 import { DataTable } from "./_components/data-table";
 
 
 const CoursesPage = async () => {
-  const data = await getInstructorDashboardData();
+  const courses = await getInstructorDashboardData(COURSE_DATA);
   // console.log(data);
 
   return (
@@ -12,7 +12,7 @@ const CoursesPage = async () => {
       {/* <Link href="/teacher/create">
         <Button>New Course</Button>
       </Link> */}
-      <DataTable columns={columns} data={data?.courses} />
+      <DataTable columns={columns} data={courses} />
     </div>
   );
 };
