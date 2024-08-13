@@ -19,6 +19,15 @@ import { TitleForm } from "./_components/title-form";
 const EditCourse = async ({ params: { courseId } }) => {
   const course = await getCourseDetails(courseId);
   const categories = await getCategories();
+
+  const mappedCategories = categories.map(c => {
+    return {
+      value: c.title,
+      label: c.title,
+      id: c.id,
+    }
+  });
+
   return (
     <>
       <AlertBanner
@@ -43,7 +52,7 @@ const EditCourse = async ({ params: { courseId } }) => {
             />
             <DescriptionForm initialData={{ description: course?.description }} courseId={courseId} />
             <ImageForm initialData={{}} courseId={courseId} />
-            <CategoryForm initialData={{}} courseId={courseId} />
+            <CategoryForm initialData={{ value: course?.category?.title }} courseId={courseId} options={mappedCategories} />
             <QuizSetForm initialData={{}} courseId={courseId} />
           </div>
           <div className="space-y-6">
