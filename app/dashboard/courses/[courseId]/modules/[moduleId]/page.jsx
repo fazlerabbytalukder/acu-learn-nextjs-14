@@ -1,18 +1,20 @@
 import AlertBanner from "@/components/alert-banner";
 import { IconBadge } from "@/components/icon-badge";
+import { getModule } from "@/queries/modules";
 import {
   ArrowLeft,
   BookOpenCheck,
-  Eye,
-  LayoutDashboard,
-  Video,
+  LayoutDashboard
 } from "lucide-react";
 import Link from "next/link";
-import { ModuleTitleForm } from "./_components/module-title-form";
-import { LessonForm } from "./_components/lesson-form";
 import { CourseActions } from "../../_components/course-action";
+import { LessonForm } from "./_components/lesson-form";
+import { ModuleTitleForm } from "./_components/module-title-form";
 
-const Module = async ({ params }) => {
+const Module = async ({ params: { courseId, moduleId } }) => {
+  const module = await getModule(moduleId);
+  console.log(module);
+
   return (
     <>
       <AlertBanner
@@ -24,7 +26,7 @@ const Module = async ({ params }) => {
         <div className="flex items-center justify-between">
           <div className="w-full">
             <Link
-              href={`/dashboard/courses/${1}`}
+              href={`/dashboard/courses/${courseId}`}
               className="flex items-center text-sm hover:opacity-75 transition mb-6"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
@@ -42,7 +44,7 @@ const Module = async ({ params }) => {
                 <IconBadge icon={LayoutDashboard} />
                 <h2 className="text-xl">Customize Your module</h2>
               </div>
-              <ModuleTitleForm initialData={{}} courseId={1} chapterId={1} />
+              <ModuleTitleForm initialData={{ title: module.title }} courseId={courseId} chapterId={moduleId} />
             </div>
             <div>
               <div className="flex items-center gap-x-2">
