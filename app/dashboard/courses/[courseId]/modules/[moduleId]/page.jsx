@@ -1,5 +1,6 @@
 import AlertBanner from "@/components/alert-banner";
 import { IconBadge } from "@/components/icon-badge";
+import { replaceMongoIdInArray } from "@/lib/convertData";
 import { getModule } from "@/queries/modules";
 import {
   ArrowLeft,
@@ -13,7 +14,10 @@ import { ModuleTitleForm } from "./_components/module-title-form";
 
 const Module = async ({ params: { courseId, moduleId } }) => {
   const module = await getModule(moduleId);
-  console.log(module);
+  // console.log(module);
+
+  const lessons = replaceMongoIdInArray(module.lessonIds).sort((a, b) => a.order - b.order);
+  console.log(lessons);
 
   return (
     <>
@@ -51,7 +55,7 @@ const Module = async ({ params: { courseId, moduleId } }) => {
                 <IconBadge icon={BookOpenCheck} />
                 <h2 className="text-xl">Module Lessons</h2>
               </div>
-              <LessonForm />
+              <LessonForm initialData={lessons} moduleId={moduleId} />
             </div>
           </div>
           <div>
