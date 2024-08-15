@@ -4,7 +4,12 @@ import { Quiz } from "@/model/quizzes-model";
 
 export async function getAllQuizSets(excludeUnPublished) {
     try {
-        const quizSets = await Quizset.find().lean();
+        let quizSets = [];
+        if (excludeUnPublished) {
+            quizSets = await Quizset.find({ active: true }).lean();
+        } else {
+            quizSets = await Quizset.find().lean();
+        }
         return replaceMongoIdInArray(quizSets);
     } catch (e) {
         throw new Error(e);
