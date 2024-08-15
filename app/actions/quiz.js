@@ -66,12 +66,41 @@ export async function deleteQuiz(quizId, quizSetId) {
     }
 }
 
-// export async function deleteLesson(lessonId, moduleId) {
+
+
+
+
+
+export async function changeQuizSetPublishState(quizSetId) {
+    const quizSet = await Quizset.findById(quizSetId);
+    try {
+        const res = await Quizset.findByIdAndUpdate(quizSetId, { active: !quizSet.active }, { lean: true });
+        return res.active;
+    } catch (err) {
+        throw new Error(err);
+    }
+}
+
+export async function deleteQuizSet(quizSetId) {
+    try {
+        await Quizset.findByIdAndDelete(quizSetId);
+    } catch (err) {
+        throw new Error(err);
+    }
+}
+// export async function changeCoursePublishState(courseId) {
+//     const course = await Course.findById(courseId);
 //     try {
-//         const module = await Module.findById(moduleId);
-//         module.lessonIds.pull(new mongoose.Types.ObjectId(lessonId));
-//         await Lesson.findByIdAndDelete(lessonId);
-//         module.save();
+//         const res = await Course.findByIdAndUpdate(courseId, { active: !course.active }, { lean: true });
+//         return res.active;
+//     } catch (err) {
+//         throw new Error(err);
+//     }
+// }
+
+// export async function deleteCourse(courseId) {
+//     try {
+//         await Course.findByIdAndDelete(courseId);
 //     } catch (err) {
 //         throw new Error(err);
 //     }
