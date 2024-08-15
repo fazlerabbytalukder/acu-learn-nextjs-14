@@ -1,9 +1,9 @@
 import AlertBanner from "@/components/alert-banner";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { getQuizSetById } from "@/queries/quizzes";
-import { Circle, CircleCheck, Pencil, Trash } from "lucide-react";
+import { Circle, CircleCheck } from "lucide-react";
 import { AddQuizForm } from "./_components/add-quiz-form";
+import { QuizCardActions } from "./_components/quiz-card-action";
 import { QuizSetAction } from "./_components/quiz-set-action";
 import { TitleForm } from "./_components/title-form";
 
@@ -71,18 +71,7 @@ const EditQuizSet = async ({ params: { quizSetId } }) => {
                         );
                       })}
                     </div>
-                    <div className="flex items-center justify-end gap-2 mt-6">
-                      <Button variant="ghost" size="sm">
-                        <Pencil className="w-3 mr-1" /> Edit
-                      </Button>
-                      <Button
-                        size="sm"
-                        className="text-destructive"
-                        variant="ghost"
-                      >
-                        <Trash className="w-3 mr-1" /> Delete
-                      </Button>
-                    </div>
+                    <QuizCardActions quiz={quiz} quizSetId={quizSetId} />
                   </div>
                 );
               })}
