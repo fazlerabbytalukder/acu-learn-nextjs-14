@@ -67,10 +67,6 @@ export async function deleteQuiz(quizId, quizSetId) {
 }
 
 
-
-
-
-
 export async function changeQuizSetPublishState(quizSetId) {
     const quizSet = await Quizset.findById(quizSetId);
     try {
@@ -88,20 +84,13 @@ export async function deleteQuizSet(quizSetId) {
         throw new Error(err);
     }
 }
-// export async function changeCoursePublishState(courseId) {
-//     const course = await Course.findById(courseId);
-//     try {
-//         const res = await Course.findByIdAndUpdate(courseId, { active: !course.active }, { lean: true });
-//         return res.active;
-//     } catch (err) {
-//         throw new Error(err);
-//     }
-// }
 
-// export async function deleteCourse(courseId) {
-//     try {
-//         await Course.findByIdAndDelete(courseId);
-//     } catch (err) {
-//         throw new Error(err);
-//     }
-// }
+export async function doCreateQuizSet(data) {
+    try {
+        data['slug'] = getSlug(data.title);
+        const craetedQuizSet = await Quizset.create(data);
+        return craetedQuizSet?._id.toString();
+    } catch (e) {
+        throw new Error(e);
+    }
+}
