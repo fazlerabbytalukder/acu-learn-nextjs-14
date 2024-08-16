@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import { getEnrollmentsForUser } from "@/queries/enrollments";
 import { getUserByEmail } from "@/queries/users";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import EnrolledCoursecard from "../../component/enrolled-coursecard";
 
@@ -23,10 +24,13 @@ async function EnrolledCourses() {
 			{enrollments && enrollments.length > 0 ? (
 				<>
 					{enrollments.map((enrollment) => (
-						<EnrolledCoursecard
+						<Link
 							key={enrollment?.id}
-							enrollment={enrollment}
-						/>
+							href={`/courses/${enrollment.course._id.toString()}/lesson}`}>
+							<EnrolledCoursecard
+								enrollment={enrollment}
+							/>
+						</Link>
 					))}
 				</>
 			) : (
