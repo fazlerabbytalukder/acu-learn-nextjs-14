@@ -1,6 +1,5 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import QuizModal from "./quiz-modal";
 const quizes = [
 	{
 		id: "quiz-1",
@@ -26,7 +25,7 @@ const quizes = [
 	},
 ];
 
-function VideoDescription() {
+function VideoDescription({ description }) {
 	return (
 		<div className="mt-4">
 			<Tabs defaultValue="details">
@@ -34,18 +33,10 @@ function VideoDescription() {
 					<TabsTrigger className="capitalize" value="details">
 						Description
 					</TabsTrigger>
-					<TabsTrigger className="capitalize" value="quiz">
-						Quiz
-					</TabsTrigger>
 				</TabsList>
 				<div className="pt-3">
 					<TabsContent value="details">
-						<div>render markdown / quill editor preview</div>
-						<div>render attachment</div>
-					</TabsContent>
-					<TabsContent value="quiz">
-						<p className="mb-4">Quiz notes</p>
-						<QuizModal quizes={quizes} />
+						{description}
 					</TabsContent>
 				</div>
 			</Tabs>
