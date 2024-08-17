@@ -3,6 +3,7 @@ import { Assessment } from "@/model/assessment-model";
 import { Module } from "@/model/module.model";
 import { Report } from "@/model/report-model";
 import mongoose from "mongoose";
+import { getCourseDetails } from "./courses";
 
 export async function getAReport(filter) {
 
@@ -58,6 +59,20 @@ export async function createWatchReport(data) {
                 );
             }
         }
+
+        // Check if the course has completed
+        // If so, add the completion time.
+        const course = await getCourseDetails(data.courseId);
+        const modulesInCourse = course?.modules;
+        const moduleCount = modulesInCourse?.length ?? 0;
+
+        const completedModule = report.totalCompletedModeules;
+        const completedModuleCount = completedModule?.length ?? 0;
+
+        if (completedModuleCount >= 1 && completedModuleCount === moduleCount) {
+            report.completion_date = Date.now();
+        }
+
         report.save();
     } catch (error) {
         throw new Error(error);
