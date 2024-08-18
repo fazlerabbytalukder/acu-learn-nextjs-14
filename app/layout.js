@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { dbConnect } from "@/service/mongo";
 import { Inter } from "next/font/google";
+import NextTopLoader from 'nextjs-toploader';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,6 +18,10 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={cn(inter.className, poppins.className)}>
+        <NextTopLoader
+          color="linear-gradient(to right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234))"
+          height={2}
+        />
         {children}
         <Toaster richColors position="top-center" />
       </body>
