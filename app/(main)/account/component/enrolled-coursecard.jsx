@@ -13,8 +13,8 @@ const EnrolledCoursecard = async ({ enrollment }) => {
     const filter = { course: enrollment?.course?._id, student: enrollment?.student?._id };
 
     const report = await getAReport(filter);
-
     // console.log(report);
+
 
     // Get Total Module Number
     const courseDetails = await getCourseDetails(enrollment?.course?._id);
@@ -28,10 +28,14 @@ const EnrolledCoursecard = async ({ enrollment }) => {
 
     // Get all Quizzes and Assignments
     const quizzes = report?.quizAssessment?.assessments;
+    console.log(quizzes);
+
     const totalQuizzes = quizzes?.length ?? 0;
 
     // Find attempted quizzes
-    const quizzesTaken = quizzes ? quizzes.filter(q => q.attempted) : [];
+    const quizzesTaken = quizzes ? quizzes.filter(q => q.attmpted) : [];
+    // console.log(quizzesTaken);
+
 
     // Find how many quizzes answered correct
 
