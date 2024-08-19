@@ -1,6 +1,12 @@
 import xd from "@/assets/adobe.svg";
 import bootstrap from "@/assets/bootstrap.svg";
 import figma from "@/assets/figma.svg";
+import servieIcon1 from "@/assets/icon-1.png";
+import servieIcon2 from "@/assets/icon-2.png";
+import servieIcon3 from "@/assets/icon-3.png";
+import servieIcon4 from "@/assets/icon-4.png";
+import servieIcon5 from "@/assets/icon-5.png";
+import servieIcon6 from "@/assets/icon-6.png";
 import nextjs from "@/assets/next js.svg";
 import reactjs from "@/assets/react.svg";
 import telwind from "@/assets/telwind.svg";
@@ -103,6 +109,7 @@ const HomePage = async () => {
                     </div>
                 </div>
             </section>
+
             <section className="mt-0 md:mt-16 overflow-hidden">
                 <div class="marquee-container h-[185px] sm:h-[210px] md:h-[327px]">
                     <div class="marquee-1-container">
@@ -190,6 +197,65 @@ const HomePage = async () => {
                             </Link>
                         );
                     })}
+                </div>
+            </section>
+
+            <section className="container md:py-12 lg:py-24">
+                <div className="flex flex-col items-center mb-5">
+                    <h2 className="text-center text-5xl font-bold mb-2">What are you getting?</h2>
+                    <p className="text-center">See what you get if you join the live course of the master</p>
+                </div>
+                <div className="bg-[#F8F8FA] rounded-lg px-5 py-7">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
+                        <div className="s-card-1 flex flex-col items-center border border-r-0 sm:border-r border-t-0 border-l-0 border-gray-300 py-4 px-5">
+                            <Image
+                                src={servieIcon1}
+                                alt="service icon"
+                            />
+                            <h4 className="text-xl font-bold text-center mt-3 mb-2">Industry Focused Live Courses</h4>
+                            <p className="text-center">Join industry focused live courses with rich guidelines, start your career journey.</p>
+                        </div>
+                        <div className="s-card-1 flex flex-col items-center border border-r-0 md:border-r border-t-0 border-l-0 border-gray-300 py-4 px-5">
+                            <Image
+                                src={servieIcon2}
+                                alt="service icon"
+                            />
+                            <h4 className="text-xl font-bold text-center mt-3 mb-2">Interactive live classes</h4>
+                            <p className="text-center">Regular live classes, conceptual classes and support classes with industry experts</p>
+                        </div>
+                        <div className="s-card-1 flex flex-col items-center border border-t-0 border-r-0 sm:border-r md:border-r-0 border-l-0 border-gray-300 py-4 px-5">
+                            <Image
+                                src={servieIcon3}
+                                alt="service icon"
+                            />
+                            <h4 className="text-xl font-bold text-center mt-3 mb-2">Module based study plan</h4>
+                            <p className="text-center">A structured study plan based on modules with quizzes, assignments and live exams</p>
+                        </div>
+                        <div className="s-card-1 flex flex-col items-center border border-r-0 md:border-r  border-b md:border-b-0 border-t-0 border-l-0 border-gray-300 py-4 px-5">
+                            <Image
+                                src={servieIcon4}
+                                alt="service icon"
+                            />
+                            <h4 className="text-xl font-bold text-center mt-3 mb-2">Realtime progress tracking</h4>
+                            <p className="text-center">Track your progress in real time, see your position on the leader board</p>
+                        </div>
+                        <div className="s-card-1 flex flex-col items-center border border-t-0 border-r-0 sm:border-r border-b sm:border-b-0 border-l-0 border-gray-300 py-4 px-5">
+                            <Image
+                                src={servieIcon5}
+                                alt="service icon"
+                            />
+                            <h4 className="text-xl font-bold text-center mt-3 mb-2">Learn live from industry experts</h4>
+                            <p className="text-center">Develop skills with the best experts in the industry, ask questions and learn directly, live.</p>
+                        </div>
+                        <div className="s-card-1 flex flex-col items-center border border-t-0 border-l-0 border-r-0 border-b-0 border-gray-300 py-4 px-5">
+                            <Image
+                                src={servieIcon6}
+                                alt="service icon"
+                            />
+                            <h4 className="text-xl font-bold text-center mt-3 mb-2">Intensive job placement support</h4>
+                            <p className="text-center">Lifetime CV, Profile Build from Job Placement Team on course completion</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </>
