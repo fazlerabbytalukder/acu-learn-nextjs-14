@@ -76,14 +76,14 @@ const HomePage = async () => {
                             <Image
                                 src={bootstrap}
                                 alt="icon"
-                                className="animate-leftRight hidden md:block"
+                                className="animate-leftRight hidden lg:block"
                             />
                         </div>
                         <div className="absolute top-[80px] left-[10px] lg:left-[30px] transform rotate-[-15deg]">
                             <Image
                                 src={telwind}
                                 alt="icon"
-                                className="animate-leftRight hidden md:block"
+                                className="animate-leftRight hidden lg:block"
                             />
                         </div>
                         <div className="absolute -bottom-[100px] left-[80px] lg:left-[150px] transform rotate-[-30deg]">
@@ -103,10 +103,62 @@ const HomePage = async () => {
                     </div>
                 </div>
             </section>
+            <section className="mt-0 md:mt-16 overflow-hidden">
+                <div class="marquee-container h-[185px] sm:h-[210px] md:h-[327px]">
+                    <div class="marquee-1-container">
+                        <div class="marquee bg-primary">
+                            <span>Solution For Your Career - &nbsp;</span>
+                            <span>Solution For Your Career - &nbsp;</span>
+                            <span>Solution For Your Career - &nbsp;</span>
+                            <span>Solution For Your Career - &nbsp;</span>
+                            <span>Solution For Your Career - &nbsp;</span>
+                            <span>Solution For Your Career - &nbsp;</span>
+                        </div>
+                    </div>
+                    <div class="marque-2-container">
+                        <div class="marquee-2">
+                            <div class="keyword-slide">
+                                <button>Web Developemt</button>
+                                <button>Web Design</button>
+                                <button>Digital Margeting</button>
+                                <button>Graphics Design</button>
+                                <button>Website Seo</button>
+                            </div>
+                            <div class="keyword-slide">
+                                <button>Web Developemt</button>
+                                <button>Web Design</button>
+                                <button>Digital Margeting</button>
+                                <button>Graphics Design</button>
+                                <button>Website Seo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {/* Courses */}
+            <section id="courses" className="container space-y-6   md:py-12 lg:py-24">
+                <div className="flex items-center justify-between">
+                    <SectionTitle>Courses</SectionTitle>
+                    <Link
+                        href={"/courses"}
+                        className=" text-sm font-medium  hover:opacity-80 flex items-center gap-1"
+                    >
+                        Browse All <ArrowRightIcon className="h-4 w-4" />
+                    </Link>
+                </div>
+                <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
+                    {courses.map((course) => {
+                        return (
+                            <CourseCard key={course.id} course={course} />
+                        );
+                    })}
+                </div>
+            </section>
+
             {/* Categories Section */}
             <section
                 id="categories"
-                className="container space-y-6  py-8  md:py-12 lg:py-24 mt-10"
+                className="container space-y-6  py-8  md:py-12 lg:py-24"
             >
                 <div className="flex items-center justify-between">
                     <SectionTitle>Categories</SectionTitle>
@@ -136,26 +188,6 @@ const HomePage = async () => {
                                     <h3 className="font-bold">{category.title}</h3>
                                 </div>
                             </Link>
-                        );
-                    })}
-                </div>
-            </section>
-
-            {/* Courses */}
-            <section id="courses" className="container space-y-6   md:py-12 lg:py-24">
-                <div className="flex items-center justify-between">
-                    <SectionTitle>Courses</SectionTitle>
-                    <Link
-                        href={"/courses"}
-                        className=" text-sm font-medium  hover:opacity-80 flex items-center gap-1"
-                    >
-                        Browse All <ArrowRightIcon className="h-4 w-4" />
-                    </Link>
-                </div>
-                <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
-                    {courses.map((course) => {
-                        return (
-                            <CourseCard key={course.id} course={course} />
                         );
                     })}
                 </div>
