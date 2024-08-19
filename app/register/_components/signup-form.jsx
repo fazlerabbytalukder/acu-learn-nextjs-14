@@ -86,10 +86,10 @@ export function SignupForm({ role }) {
               <Label htmlFor="password">Password</Label>
               <Input id="password" name="password" type="password" />
             </div>
-            <div className="grid gap-2">
+            {/* <div className="grid gap-2">
               <Label htmlFor="confirmPassword">Confirm Password</Label>
               <Input id="confirmPassword" name="confirmPassword" type="password" />
-            </div>
+            </div> */}
             <Button type="submit" className="w-full">
               Create an account
             </Button>

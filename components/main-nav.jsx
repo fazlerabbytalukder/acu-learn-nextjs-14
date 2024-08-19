@@ -29,6 +29,8 @@ export function MainNav({ items, children }) {
 	const [loginSession, setLoginSession] = useState(null);
 	const [loggedInUser, setLoggedInUser] = useState(null);
 
+	const firstInitial = loggedInUser?.firstName?.charAt(0) || "";
+
 	// console.log(session);
 
 	if (session?.error === 'RefreshAccessTokenError') {
@@ -122,7 +124,7 @@ export function MainNav({ items, children }) {
 									src={loggedInUser?.profilePicture}
 									alt="@shadcn"
 								/>
-								<AvatarFallback>CN</AvatarFallback>
+								<AvatarFallback>{firstInitial}</AvatarFallback>
 							</Avatar>
 						</div>
 					</DropdownMenuTrigger>
