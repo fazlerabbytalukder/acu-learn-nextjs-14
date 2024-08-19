@@ -1,3 +1,9 @@
+import xd from "@/assets/adobe.svg";
+import bootstrap from "@/assets/bootstrap.svg";
+import figma from "@/assets/figma.svg";
+import nextjs from "@/assets/next js.svg";
+import reactjs from "@/assets/react.svg";
+import telwind from "@/assets/telwind.svg";
 import { SectionTitle } from "@/components/section-title";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -15,40 +21,85 @@ const HomePage = async () => {
 
     return (
         <>
-            <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32 grainy">
-                <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center relative isolate">
-                    <div
-                        aria-hidden="true"
-                        className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-                    >
+            <section className="space-y-6 pb-8 pt-6 md:pb-12 md:py-32 grainy">
+                <div className="container flex justify-center items-center relative">
+                    <div className="flex max-w-[50rem] lg:max-w-[64rem] flex-col items-center gap-4 text-center relative isolate">
                         <div
-                            style={{
-                                clipPath:
-                                    "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-                            }}
-                            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-                        />
-                    </div>
-                    <span className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium border shadow-lg">
-                        Hey, Welcome
-                    </span>
-                    <h1 className="font-heading text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-                        Learn Today, Lead Tomorrow.
-                    </h1>
-                    <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-                        “You don’t understand anything until you learn it more than one
-                        way.”
-                    </p>
-                    <div className="flex items-center gap-3 flex-wrap justify-center">
-                        <Link href="/courses" className={cn(buttonVariants({ size: "lg" }))}>
-                            Explore Now
-                        </Link>
-                        <Link
-                            href="/register/instructor"
-                            className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+                            aria-hidden="true"
+                            className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
                         >
-                            Become An Instructor
-                        </Link>
+                            <div
+                                style={{
+                                    clipPath:
+                                        "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+                                }}
+                                className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                            />
+                        </div>
+                        <span className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium border shadow-lg">
+                            Hey, Welcome To ACU
+                        </span>
+                        <h1 className="font-heading text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
+                            Learn, Grow, Succeed Together
+                        </h1>
+                        <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
+                            “Empowering Learners and Instructors in a Unified Platform”
+                        </p>
+                        <div className="flex items-center gap-3 flex-wrap justify-center">
+                            <Link href="/courses" className={cn(buttonVariants({ size: "lg" }))}>
+                                Explore Now
+                            </Link>
+                            <Link
+                                href="/register/instructor"
+                                className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+                            >
+                                Become An Instructor
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="image-box">
+                        <div className="absolute -top-[130px] left-[80px] lg:left-[150px] transform rotate-[-30deg]">
+                            <Image
+                                src={nextjs}
+                                alt="icon"
+                                className="animate-upDowntwo hidden md:block"
+                            />
+                        </div>
+                        <div className="absolute -top-[130px] right-[80px] lg:right-[150px] transform rotate-[30deg]">
+                            <Image
+                                src={reactjs}
+                                alt="icon"
+                                className="animate-upDown hidden md:block"
+                            />
+                        </div>
+                        <div className="absolute top-[80px] right-[10px] lg:right-[30px] transform rotate-[15deg]">
+                            <Image
+                                src={bootstrap}
+                                alt="icon"
+                                className="animate-leftRight hidden md:block"
+                            />
+                        </div>
+                        <div className="absolute top-[80px] left-[10px] lg:left-[30px] transform rotate-[-15deg]">
+                            <Image
+                                src={telwind}
+                                alt="icon"
+                                className="animate-leftRight hidden md:block"
+                            />
+                        </div>
+                        <div className="absolute -bottom-[100px] left-[80px] lg:left-[150px] transform rotate-[-30deg]">
+                            <Image
+                                src={xd}
+                                alt="icon"
+                                className="animate-upDown hidden md:block"
+                            />
+                        </div>
+                        <div className="absolute -bottom-[100px] right-[80px] lg:right-[150px] transform rotate-[30deg]">
+                            <Image
+                                src={figma}
+                                alt="icon"
+                                className="animate-upDowntwo hidden md:block"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
