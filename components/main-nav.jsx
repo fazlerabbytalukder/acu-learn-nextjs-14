@@ -145,9 +145,6 @@ export function MainNav({ items, children }) {
 								My Courses
 							</Link>
 						</DropdownMenuItem>
-						<DropdownMenuItem className="cursor-pointer" asChild>
-							<Link href="">Testimonials & Certificates</Link>
-						</DropdownMenuItem>
 						{loginSession && (<DropdownMenuItem className="cursor-pointer" asChild>
 							<Link href="#" onClick={() => { signOut() }}>Logout</Link>
 						</DropdownMenuItem>)}
