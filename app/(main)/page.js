@@ -11,6 +11,7 @@ import nextjs from "@/assets/next js.svg";
 import reactjs from "@/assets/react.svg";
 import telwind from "@/assets/telwind.svg";
 import { SectionTitle } from "@/components/section-title";
+import { TestimonialPage } from "@/components/testimonial-page";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { getCategories } from "@/queries/categories";
@@ -201,7 +202,7 @@ const HomePage = async () => {
             </section>
 
             <section className="container md:py-12 lg:py-24">
-                <div className="flex flex-col items-center mb-5">
+                <div className="flex flex-col items-center mb-10">
                     <h2 className="text-center text-5xl font-bold mb-2">What are you getting?</h2>
                     <p className="text-center">See what you get if you join the live course of the master</p>
                 </div>
@@ -258,6 +259,8 @@ const HomePage = async () => {
                     </div>
                 </div>
             </section>
+
+            <TestimonialPage />
         </>
     );
 };
