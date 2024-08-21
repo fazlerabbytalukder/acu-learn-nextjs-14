@@ -13,9 +13,13 @@ const CourseDetailsIntro = async ({ course }) => {
 
     const loggedInUser = await getUserByEmail(session?.user?.email);
 
-    const hasEnrollment = await hasEnrollmentForCourse(course?.id, loggedInUser?.id);
+    const hasEnrollment = loggedInUser
+        ? await hasEnrollmentForCourse(course?.id, loggedInUser?.id)
+        : false;
 
     console.log({ hasEnrollment });
+
+
 
 
     return (
@@ -35,7 +39,7 @@ const CourseDetailsIntro = async ({ course }) => {
                             </p>
 
                             <div className="mt-6 flex items-center justify-center flex-wrap gap-3">
-                                {
+                                {loggedInUser ? (
                                     hasEnrollment ? (
                                         <Link href={`/courses/${course?.id}/lesson`} className={cn(buttonVariants({ size: "lg" }))}>
                                             Access Course
@@ -43,7 +47,11 @@ const CourseDetailsIntro = async ({ course }) => {
                                     ) : (
                                         <EnrollCourse courseId={course?.id} />
                                     )
-                                }
+                                ) : (
+                                    <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
+                                        Please Log In to Enroll
+                                    </Link>
+                                )}
                             </div>
                         </div>
                     </div>
