@@ -69,7 +69,7 @@ export function LoginForm() {
           </div>
         </form>
         <div className="mt-4 text-center text-sm">
-          Don&apos;t have an account?{" "}
+          Do not have an account?{" "}
           <p>
             Register as {" "}
             <Link href="/register/instructor" className="underline">

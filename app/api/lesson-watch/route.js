@@ -22,7 +22,7 @@ export async function POST(request) {
 
     const lesson = await getLesson(lessonId);
     const loggedinUser = await getLoggedInUser();
-    const module = await getModuleBySlug(moduleSlug);
+    const modulet = await getModuleBySlug(moduleSlug);
 
     if (!loggedinUser) {
         return new NextResponse(`You are not authenticated.`, {
@@ -45,7 +45,7 @@ export async function POST(request) {
     const watchEntry = {
         lastTime,
         lesson: lesson.id,
-        module: module.id,
+        module: modulet.id,
         user: loggedinUser.id,
         state,
     };
@@ -53,7 +53,7 @@ export async function POST(request) {
     try {
         const found = await Watch.findOne({
             lesson: lessonId,
-            module: module.id,
+            module: modulet.id,
             user: loggedinUser.id,
         }).lean();
 
@@ -66,14 +66,14 @@ export async function POST(request) {
             if (!found) {
                 watchEntry["created_at"] = Date.now();
                 await Watch.create(watchEntry);
-                await updateReport(loggedinUser.id, courseId, module.id, lessonId)
+                await updateReport(loggedinUser.id, courseId, modulet.id, lessonId)
             } else {
                 if (found.state === STARTED) {
                     watchEntry["modified_at"] = Date.now();
                     await Watch.findByIdAndUpdate(found._id, {
                         state: COMPLETED,
                     });
-                    await updateReport(loggedinUser.id, courseId, module.id, lessonId)
+                    await updateReport(loggedinUser.id, courseId, modulet.id, lessonId)
                 }
             }
         }

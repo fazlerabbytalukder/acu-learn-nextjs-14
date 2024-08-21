@@ -13,15 +13,15 @@ import { ModuleActions } from "./_components/module-action";
 import { ModuleTitleForm } from "./_components/module-title-form";
 
 const Module = async ({ params: { courseId, moduleId } }) => {
-  const module = await getModule(moduleId);
+  const modulet = await getModule(moduleId);
   // console.log(module);
 
-  const lessons = replaceMongoIdInArray(module.lessonIds).sort((a, b) => a.order - b.order);
+  const lessons = replaceMongoIdInArray(modulet.lessonIds).sort((a, b) => a.order - b.order);
   console.log(lessons);
 
   return (
     <>
-      {!module?.active && (<AlertBanner
+      {!modulet?.active && (<AlertBanner
         label="This module is unpublished. It will not be visible in the course."
         variant="warning"
       />)}
@@ -37,7 +37,7 @@ const Module = async ({ params: { courseId, moduleId } }) => {
               Back to course setup
             </Link>
             <div className="flex items-center justify-end">
-              <ModuleActions module={module} courseId={courseId} />
+              <ModuleActions module={modulet} courseId={courseId} />
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@ const Module = async ({ params: { courseId, moduleId } }) => {
                 <IconBadge icon={LayoutDashboard} />
                 <h2 className="text-xl">Customize Your module</h2>
               </div>
-              <ModuleTitleForm initialData={{ title: module.title }} courseId={courseId} chapterId={moduleId} />
+              <ModuleTitleForm initialData={{ title: modulet.title }} courseId={courseId} chapterId={moduleId} />
             </div>
             <div>
               <div className="flex items-center gap-x-2">

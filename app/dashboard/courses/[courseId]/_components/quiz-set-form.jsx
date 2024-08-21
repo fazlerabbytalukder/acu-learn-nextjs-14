@@ -77,7 +77,7 @@ export const QuizSetForm = ({
             !initialData.quizSetId && "text-slate-500 italic"
           )}
         >
-          {foundMatch ? <span>{foundMatch.label}</span> : <span>"No quiz set selected"</span>}
+          {foundMatch ? <span>{foundMatch.label}</span> : <span>No quiz set selected</span>}
         </p>
       )}
       {console.log({ options })}

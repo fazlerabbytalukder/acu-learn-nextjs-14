@@ -46,7 +46,7 @@ export const TestimonialPage = () => {
                             </div>
                         </div>
                         <div className="testimonial-card rounded-lg border bg-[#F8F8FA] p-4">
-                            <p>I typed and backspaced every time how to describe you as a teacher. Can't describe actually. You are such a great teacher. Someone from Bangladesh doing 'this' great. Thank You.</p>
+                            <p>I typed and backspaced every time how to describe you as a teacher. Ca not describe actually. You are such a great teacher. Someone from Bangladesh doing this great. Thank You.</p>
                             <div className="mt-5">
                                 <div className="flex justify-between items-center">
                                     <div className="flex gap-x-3">
@@ -86,7 +86,7 @@ export const TestimonialPage = () => {
                             </div>
                         </div>
                         <div className="testimonial-card rounded-lg border bg-[#F8F8FA] p-4">
-                            <p>I can assure everybody: if anyone just finishs this playlist and can capture the information, he won't get stuck anywhere in react interview. I faced 3 international interviews and could answer properly. This is a gem.</p>
+                            <p>I can assure everybody: if anyone just finishs this playlist and can capture the information, he wont get stuck anywhere in react interview. I faced 3 international interviews and could answer properly. This is a gem.</p>
                             <div className="mt-5">
                                 <div className="flex justify-between items-center">
                                     <div className="flex gap-x-3">
@@ -108,7 +108,7 @@ export const TestimonialPage = () => {
                     </div>
                     <div className="col-2 space-y-5">
                         <div className="testimonial-card rounded-lg border bg-[#F8F8FA] p-4">
-                            <p>No doubt, you are just amazing. I am highly motivated, helped from your videos. I almost stoped watching english videos these days. Your rich videos could be in different language yet you are doing them in 'Bangla' that's so nice of you. Highly appritiable. May Allah bless you and give you the best rewards</p>
+                            <p>No doubt, you are just amazing. I am highly motivated, helped from your videos. I almost stoped watching english videos these days. Your rich videos could be in different language yet you are doing them in Bangla thats so nice of you. Highly appritiable. May Allah bless you and give you the best rewards</p>
                             <div className="mt-5">
                                 <div className="flex justify-between items-center">
                                     <div className="flex gap-x-3">
@@ -128,7 +128,7 @@ export const TestimonialPage = () => {
                             </div>
                         </div>
                         <div className="testimonial-card rounded-lg border bg-[#F8F8FA] p-4">
-                            <p>I have not said before that I like all your videos, your understanding rules are different from others. To be specific, the video that made me fall in love with your explanation is React JS in 10 minutes. It was a great video ❤️❤️</p>
+                            <p>I have not said before that I like all your videos, your understanding rules are different from others. To be specific, the video that made me fall in love with your explanation is React JS in 10 minutes. It was a great video</p>
                             <div className="mt-5">
                                 <div className="flex justify-between items-center">
                                     <div className="flex gap-x-3">
@@ -148,7 +148,7 @@ export const TestimonialPage = () => {
                             </div>
                         </div>
                         <div className="testimonial-card rounded-lg border bg-[#F8F8FA] p-4">
-                            <p>Bro, your video and other channel's videos, the process of understanding is completely different. Just mind blowing. Brother we always expect such videos from you.</p>
+                            <p>Bro, your video and other channels videos, the process of understanding is completely different. Just mind blowing. Brother we always expect such videos from you.</p>
                             <div className="mt-5">
                                 <div className="flex justify-between items-center">
                                     <div className="flex gap-x-3">
@@ -210,7 +210,7 @@ export const TestimonialPage = () => {
                             </div>
                         </div>
                         <div className="testimonial-card rounded-lg border bg-[#F8F8FA] p-4">
-                            <p>ACU's specialty is that they focus more on design psychology than design. Which is very useful for a student job and can differentiate himself from other ten. This industry focused practice has helped me a lot professionally.</p>
+                            <p>ACUs specialty is that they focus more on design psychology than design. Which is very useful for a student job and can differentiate himself from other ten. This industry focused practice has helped me a lot professionally.</p>
                             <div className="mt-5">
                                 <div className="flex justify-between items-center">
                                     <div className="flex gap-x-3">
