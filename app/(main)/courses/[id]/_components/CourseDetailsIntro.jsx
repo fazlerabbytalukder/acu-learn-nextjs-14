@@ -39,19 +39,14 @@ const CourseDetailsIntro = async ({ course }) => {
                             </p>
 
                             <div className="mt-6 flex items-center justify-center flex-wrap gap-3">
-                                {loggedInUser ? (
-                                    hasEnrollment ? (
-                                        <Link href={`/courses/${course?.id}/lesson`} className={cn(buttonVariants({ size: "lg" }))}>
-                                            Access Course
-                                        </Link>
-                                    ) : (
-                                        <EnrollCourse courseId={course?.id} />
-                                    )
-                                ) : (
-                                    <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-                                        Please Log In to Enroll
+                                {hasEnrollment ? (
+                                    <Link href={`/courses/${course?.id}/lesson`} className={cn(buttonVariants({ size: "lg" }))}>
+                                        Access Course
                                     </Link>
+                                ) : (
+                                    <EnrollCourse courseId={course?.id} loggedInUser={loggedInUser} />
                                 )}
+
                             </div>
                         </div>
                     </div>
