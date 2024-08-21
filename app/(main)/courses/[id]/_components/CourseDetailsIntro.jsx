@@ -44,14 +44,6 @@ const CourseDetailsIntro = async ({ course }) => {
                                         <EnrollCourse courseId={course?.id} />
                                     )
                                 }
-                                <Link
-                                    href=""
-                                    className={cn(
-                                        buttonVariants({ variant: "outline", size: "lg" })
-                                    )}
-                                >
-                                    See Intro
-                                </Link>
                             </div>
                         </div>
                     </div>

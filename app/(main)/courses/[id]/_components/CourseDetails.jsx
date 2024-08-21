@@ -1,6 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { formatMyDate } from "@/lib/date";
-import Image from "next/image";
 import CourseCurriculam from "./CourseCurriculam";
 import CourseInstructor from "./CourseInstructor";
 import CourseOverview from "./CourseOverview";
@@ -22,13 +21,9 @@ const CourseDetails = ({ course }) => {
                 {/*  */}
                 <div className="flex sm:items-center gap-5 flex-col sm:flex-row sm:gap-6 md:gap-20 mt-6">
                     <div className="flex items-center gap-2">
-                        <Image
-                            className="w-[40px] h-[40px] rounded-full"
-                            src={course?.instructor?.profilePicture}
-                            alt={course?.instructor?.firstName}
-                            width={20}
-                            height={20}
-                        />
+                        <div className="bg-[#030712] w-10 h-10 rounded-full flex justify-center items-center">
+                            <p className="text-white">{course?.instructor?.firstName?.charAt(0)}</p>
+                        </div>
                         <p className="font-bold">{course?.instructor?.firstName} {' '} {course?.instructor?.lastName}</p>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
