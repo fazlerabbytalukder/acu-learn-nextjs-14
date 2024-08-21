@@ -1,10 +1,12 @@
 import { EnrollCourse } from "@/components/enroll-course";
 import { formatPrice } from "@/lib/formatPrice";
+import { getLoggedInUser } from "@/lib/loggedin-user";
 import { BookOpen } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const CourseCard = ({ course }) => {
+const CourseCard = async ({ course }) => {
+    const loggedInUser = await getLoggedInUser();
     return (
         <div className="group hover:shadow-sm transition overflow-hidden border rounded-lg p-3 h-full">
             <Link key={course.id} href={`/courses/${course.id}`}>
@@ -38,7 +40,7 @@ const CourseCard = ({ course }) => {
                     {formatPrice(course?.price)}
                 </p>
 
-                <EnrollCourse courseId={course?.id} asLink={true} />
+                <EnrollCourse courseId={course?.id} asLink={true} loggedInUser={loggedInUser} />
             </div>
         </div>
     )

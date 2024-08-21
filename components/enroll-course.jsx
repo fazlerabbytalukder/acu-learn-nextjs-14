@@ -4,10 +4,15 @@ import { cn } from "@/lib/utils"
 import { ArrowRight } from "lucide-react"
 import { Button, buttonVariants } from "./ui/button"
 
-export const EnrollCourse = ({ asLink, courseId }) => {
+export const EnrollCourse = ({ asLink, courseId, loggedInUser }) => {
     // console.log(course);
 
     const formAction = async (data) => {
+        if (!loggedInUser) {
+            window.location.assign("/login")
+            return
+        }
+
         const { url } = await createCheckoutSession(data);
         window.location.assign(url)
     }
