@@ -1,9 +1,7 @@
-import { Separator } from "@/components/ui/separator";
 import { replaceMongoIdInArray, replaceMongoIdInObject } from "@/lib/convertData";
 import { getCourseDetails } from "@/queries/courses";
 import { getLessonBySlug } from "@/queries/leaaons";
 import { LessonVideo } from "./_components/lesson-video";
-import VideoDescription from "./_components/video-description";
 
 const Course = async ({ params: { id }, searchParams: { name, module } }) => {
 	const course = await getCourseDetails(id);
@@ -27,8 +25,8 @@ const Course = async ({ params: { id }, searchParams: { name, module } }) => {
 					<div className="p-4 flex flex-col md:flex-row items-center justify-between">
 						<h2 className="text-2xl font-semibold mb-2">{lessonToPlay.title}</h2>
 					</div>
-					<Separator />
-					<VideoDescription description={lessonToPlay?.description} />
+					{/* <Separator /> */}
+					{/* <VideoDescription description={lessonToPlay?.description} /> */}
 				</div>
 			</div>
 		</div>
