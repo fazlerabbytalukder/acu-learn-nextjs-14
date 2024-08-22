@@ -63,7 +63,7 @@ export const {
                     console.log(user);
 
                     if (user) {
-                        const isMatch = await bcrypt.compare(
+                        const isMatch = bcrypt.compare(
                             credentials.password,
                             user.password
                         );
