@@ -3,7 +3,6 @@ import { getLoggedInUser } from "@/lib/loggedin-user";
 import { Watch } from "@/model/watch-model";
 import { getCourseDetails } from "@/queries/courses";
 import { getAReport } from "@/queries/reports";
-import { DownloadCertificate } from "./download-cirtificate";
 import { Quiz } from "./quiz";
 import { SidebarModules } from "./sidebar-modules";
 
@@ -57,7 +56,7 @@ export const CourseSidebar = async ({ courseId }) => {
           {quizSet && <Quiz courseId={courseId} quizSet={quizSet} isTaken={isQuizComplete} />}
         </div>
         <div className="w-full px-6 mb-10">
-          <DownloadCertificate courseId={courseId} totalProgress={totalProgress} />
+          {/* <DownloadCertificate courseId={courseId} totalProgress={totalProgress} /> */}
           {/* <GiveReview courseId={courseId} /> */}
         </div>
       </div>
