@@ -1,50 +1,49 @@
 import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import GoogleProvider from "next-auth/providers/google";
 import { authConfig } from "./auth.confiq";
 import { User } from "./model/user-model";
 
-async function refreshAccessToken(token) {
-    try {
-        const url =
-            "https://oauth2.googleapis.com/token?" +
-            new URLSearchParams({
-                client_id: process.env.GOOGLE_CLIENT_ID,
-                client_secret: process.env.GOOGLE_CLIENT_SECRET,
-                grant_type: "refresh_token",
-                refresh_token: token.refreshToken,
-            });
+// async function refreshAccessToken(token) {
+//     try {
+//         const url =
+//             "https://oauth2.googleapis.com/token?" +
+//             new URLSearchParams({
+//                 client_id: process.env.GOOGLE_CLIENT_ID,
+//                 client_secret: process.env.GOOGLE_CLIENT_SECRET,
+//                 grant_type: "refresh_token",
+//                 refresh_token: token.refreshToken,
+//             });
 
-        const response = await fetch(url, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            method: 'POST'
-        })
+//         const response = await fetch(url, {
+//             headers: {
+//                 'Content-Type': 'application/x-www-form-urlencoded'
+//             },
+//             method: 'POST'
+//         })
 
-        const refreshedTokens = await response.json();
+//         const refreshedTokens = await response.json();
 
-        if (!response.ok) {
-            throw refreshedTokens;
-        }
+//         if (!response.ok) {
+//             throw refreshedTokens;
+//         }
 
-        return {
-            ...token,
-            accessToken: refreshedTokens?.access_token,
-            accessTokenExpires: Date.now() + refreshedTokens?.expires_in * 1000,
-            refreshToken: refreshedTokens?.refresh_token,
-        }
+//         return {
+//             ...token,
+//             accessToken: refreshedTokens?.access_token,
+//             accessTokenExpires: Date.now() + refreshedTokens?.expires_in * 1000,
+//             refreshToken: refreshedTokens?.refresh_token,
+//         }
 
 
-    } catch (error) {
-        console.log(error);
-        return {
-            ...token,
-            error: "RefreshAccessTokenError"
-        }
-    }
-}
+//     } catch (error) {
+//         console.log(error);
+//         return {
+//             ...token,
+//             error: "RefreshAccessTokenError"
+//         }
+//     }
+// }
 
 export const {
     handlers: { GET, POST },
@@ -84,17 +83,17 @@ export const {
                 }
             }
         }),
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            authorization: {
-                params: {
-                    prompt: "consent",
-                    access_type: "offline",
-                    response_type: "code",
-                },
-            },
-        }),
+        // GoogleProvider({
+        //     clientId: process.env.GOOGLE_CLIENT_ID,
+        //     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        //     authorization: {
+        //         params: {
+        //             prompt: "consent",
+        //             access_type: "offline",
+        //             response_type: "code",
+        //         },
+        //     },
+        // }),
     ],
     // callbacks: {
     //     async jwt({ token, user, account }) {
