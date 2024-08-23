@@ -1,4 +1,4 @@
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { authConfig } from "./auth.confiq";
@@ -62,12 +62,8 @@ export const {
                     console.log(user);
 
                     if (user) {
-                        const isMatch = bcrypt.compare(
-                            credentials.password,
-                            user.password
-                        );
-
-                        if (isMatch) {
+                        // Insecure plain text password comparison
+                        if (credentials.password === user.password) {
                             return user;
                         } else {
                             console.error("password mismatch");
@@ -77,6 +73,7 @@ export const {
                         console.error("User not found");
                         throw new Error("User not found");
                     }
+
                 } catch (err) {
                     console.error(err);
                     throw new Error(err);

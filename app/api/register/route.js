@@ -1,6 +1,5 @@
 import { User } from "@/model/user-model";
 import { dbConnect } from "@/service/mongo";
-import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
@@ -9,13 +8,13 @@ export const POST = async (request) => {
 
     await dbConnect();
 
-    const hashedPassword = await bcrypt.hash(password, 5);
+    // const hashedPassword = await bcrypt.hash(password, 5);
 
     const newUser = {
         firstName,
         lastName,
         email,
-        password: hashedPassword,
+        password,
         role: userRole
     }
 
