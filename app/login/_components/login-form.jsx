@@ -69,13 +69,13 @@ export function LoginForm() {
           </div>
         </form>
         <div className="mt-4 text-center text-sm">
-          Do not have an account?{" "}
+          Do not have an account?
           <p>
-            Register as {" "}
+            Register as
             <Link href="/register/instructor" className="underline">
-              Instructor {" "}
+              Instructor
             </Link>
-            or {" "}
+            or
             <Link href="/register/student" className="underline">
               Student
             </Link>
