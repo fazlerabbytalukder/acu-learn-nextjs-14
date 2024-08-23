@@ -30,7 +30,7 @@ export function LoginForm() {
         console.error(response.error)
         setError(response.error);
       } else {
-        router.push("/courses");
+        router.push("/");
       }
     } catch (e) {
       setError(e.message);
