@@ -3,6 +3,7 @@ import { getLoggedInUser } from "@/lib/loggedin-user";
 import { Watch } from "@/model/watch-model";
 import { getCourseDetails } from "@/queries/courses";
 import { getAReport } from "@/queries/reports";
+import { dbConnect } from "@/service/mongo";
 import { Quiz } from "./quiz";
 import { SidebarModules } from "./sidebar-modules";
 
@@ -23,6 +24,7 @@ export const CourseSidebar = async ({ courseId }) => {
 
     const updatedLessons = await Promise.all(lessons.map(async (lesson) => {
       const lessonId = lesson._id.toString();
+      await dbConnect();
       const watch = await Watch.findOne({ lesson: lessonId, module: moduleId, user: loggedinUser.id }).lean();
       if (watch?.state === 'completed') {
         console.log(`This lesson ${lesson.title} has completed`);
