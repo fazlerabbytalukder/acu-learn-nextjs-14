@@ -3,6 +3,7 @@ import { Watch } from "@/model/watch-model";
 import { getLesson } from "@/queries/leaaons";
 import { getModuleBySlug } from "@/queries/modules";
 import { createWatchReport } from "@/queries/reports";
+import { dbConnect } from "@/service/mongo";
 import { NextResponse } from "next/server";
 
 const STARTED = "started";
@@ -51,6 +52,7 @@ export async function POST(request) {
     };
 
     try {
+        await dbConnect();
         const found = await Watch.findOne({
             lesson: lessonId,
             module: modulet.id,
@@ -60,16 +62,19 @@ export async function POST(request) {
         if (state === STARTED) {
             if (!found) {
                 watchEntry["created_at"] = Date.now();
+                await dbConnect();
                 await Watch.create(watchEntry);
             }
         } else if (state === COMPLETED) {
             if (!found) {
                 watchEntry["created_at"] = Date.now();
+                await dbConnect();
                 await Watch.create(watchEntry);
                 await updateReport(loggedinUser.id, courseId, modulet.id, lessonId)
             } else {
                 if (found.state === STARTED) {
                     watchEntry["modified_at"] = Date.now();
+                    await dbConnect();
                     await Watch.findByIdAndUpdate(found._id, {
                         state: COMPLETED,
                     });
