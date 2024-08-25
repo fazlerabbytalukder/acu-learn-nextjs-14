@@ -2,12 +2,14 @@
 
 import { User } from "@/model/user-model";
 import { validatePassword } from "@/queries/users";
+import { dbConnect } from "@/service/mongo";
 import bcrypt from "bcryptjs";
 import { revalidatePath } from "next/cache";
 
 export async function updateUserInfo(email, updatedData) {
     try {
         const filter = { email: email };
+        await dbConnect();
         await User.findOneAndUpdate(filter, updatedData);
         revalidatePath('/account');
     } catch (error) {
@@ -31,6 +33,7 @@ export async function changePassword(email, oldPassword, newPassword) {
     }
 
     try {
+        await dbConnect();
         await User.findOneAndUpdate(filter, dataToUpdate);
         revalidatePath('/account');
     } catch (error) {
