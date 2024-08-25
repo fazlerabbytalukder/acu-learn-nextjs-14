@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
     const { firstName, lastName, email, password, userRole } = await request.json();
-    console.log(firstName, lastName, email, password, userRole);
+    // console.log(firstName, lastName, email, password, userRole);
 
     await dbConnect();
 
@@ -18,7 +18,7 @@ export const POST = async (request) => {
         role: userRole
     }
 
-    console.log(newUser);
+    // console.log(newUser);
 
     try {
         await User.create(newUser);

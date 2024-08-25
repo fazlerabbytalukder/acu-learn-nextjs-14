@@ -107,11 +107,11 @@ export const AddQuizForm = ({ quizSetId }) => {
   });
 
   const { isSubmitting, isValid, errors } = form.formState;
-  console.log(errors);
+  // console.log(errors);
 
   const onSubmit = async (values) => {
     try {
-      console.log({ values });
+      // console.log({ values });
 
       const correctness = [values.optionA.isTrue, values.optionB.isTrue, values.optionC.isTrue, values.optionD.isTrue];
 

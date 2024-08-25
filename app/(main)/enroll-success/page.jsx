@@ -10,7 +10,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 const Success = async ({ searchParams: { session_id, courseId } }) => {
-  console.log(session_id, courseId);
+  // console.log(session_id, courseId);
 
   if (!session_id)
     throw new Error(
@@ -46,17 +46,17 @@ const Success = async ({ searchParams: { session_id, courseId } }) => {
   const customerName = `${loggedInUser?.firstName} ${loggedInUser?.lastName}`;
   const customerEmail = loggedInUser?.email;
   const productName = course?.title;
-  console.log(productName, customerName, customerEmail);
+  // console.log(productName, customerName, customerEmail);
 
   if (paymentStatus === "succeeded") {
     // Update DB(Enrollment collection)
-    console.log(course?.id, loggedInUser?.id);
+    // console.log(course?.id, loggedInUser?.id);
     const enrolled = await enrollForCourse(
       course?.id,
       loggedInUser?.id,
       "stripe"
     );
-    console.log(enrolled);
+    // console.log(enrolled);
 
     //who paid
     const instructorName = `${course?.instructor?.firstName} ${course?.instructor?.lastName}`;
@@ -75,7 +75,7 @@ const Success = async ({ searchParams: { session_id, courseId } }) => {
     ];
 
     const emailSentResponse = await sendEmails(emailsToSend);
-    console.log(emailSentResponse);
+    // console.log(emailSentResponse);
   }
 
 

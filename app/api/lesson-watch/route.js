@@ -30,7 +30,7 @@ export async function POST(request) {
             status: 401,
         });
     }
-    console.log(state);
+    // console.log(state);
     if (state !== STARTED && state !== COMPLETED) {
         return new NextResponse(`Invalid state. Can not process request.`, {
             status: 500,

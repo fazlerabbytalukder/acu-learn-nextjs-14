@@ -28,7 +28,7 @@ const EnrolledCoursecard = async ({ enrollment }) => {
 
     // Get all Quizzes and Assignments
     const quizzes = report?.quizAssessment?.assessments;
-    console.log(quizzes);
+    // console.log(quizzes);
 
     const totalQuizzes = quizzes?.length ?? 0;
 

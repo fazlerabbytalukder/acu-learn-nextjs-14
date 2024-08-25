@@ -17,7 +17,7 @@ const CourseDetailsIntro = async ({ course }) => {
         ? await hasEnrollmentForCourse(course?.id, loggedInUser?.id)
         : false;
 
-    console.log({ hasEnrollment });
+    // console.log({ hasEnrollment });
 
 
 

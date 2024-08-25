@@ -16,7 +16,7 @@ async function EnrolledCourses() {
 
 	const enrollments = await getEnrollmentsForUser(loggedInUser?.id);
 
-	console.log(enrollments);
+	// console.log(enrollments);
 
 
 	return (

@@ -6,7 +6,7 @@ import Testimonials from "./_components/Testimonials";
 
 const SingleCoursePage = async ({ params: { id } }) => {
     const course = await getCourseDetails(id);
-    console.log(course.category.title);
+    // console.log(course.category.title);
 
     return (
         <>

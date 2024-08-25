@@ -27,7 +27,7 @@ export const CourseSidebar = async ({ courseId }) => {
       await dbConnect();
       const watch = await Watch.findOne({ lesson: lessonId, module: moduleId, user: loggedinUser.id }).lean();
       if (watch?.state === 'completed') {
-        console.log(`This lesson ${lesson.title} has completed`);
+        // console.log(`This lesson ${lesson.title} has completed`);
         lesson.state = 'completed';
       }
       return lesson;
@@ -40,8 +40,8 @@ export const CourseSidebar = async ({ courseId }) => {
   const quizSet = course?.quizSet;
   const isQuizComplete = report?.quizAssessment ? true : false;
 
-  console.log({ quizSet });
-  console.log({ isQuizComplete });
+  // console.log({ quizSet });
+  // console.log({ isQuizComplete });
 
   return (
     <>

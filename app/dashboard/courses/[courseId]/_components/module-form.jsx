@@ -80,7 +80,7 @@ export const ModulesForm = ({ initialData, courseId }) => {
   };
 
   const onReorder = async (updateData) => {
-    console.log({ updateData });
+    // console.log({ updateData });
     try {
 
       reOrderModules(updateData);

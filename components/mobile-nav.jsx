@@ -26,7 +26,7 @@ export function MobileNav({ items, children }) {
   }
 
   useEffect(() => {
-    console.log("test");
+    // console.log("test");
     setLoginSession(session);
   }, [session]);
 

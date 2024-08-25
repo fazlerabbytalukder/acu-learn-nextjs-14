@@ -74,7 +74,7 @@ export const LessonForm = ({ initialData, moduleId, courseId }) => {
   };
 
   const onReorder = async (updateData) => {
-    console.log({ updateData });
+    // console.log({ updateData });
     try {
       setIsUpdating(true);
       await reOrderLesson(updateData);

@@ -21,7 +21,7 @@ function QuizModal({ courseId, quizSetId, quizzes, open, setOpen }) {
     const nextQuizIndex = quizIndex + 1;
     const prevQuizIndex = quizIndex - 1;
     if (type === "next" && nextQuizIndex <= lastQuizIndex) {
-      console.log("next");
+      // console.log("next");
       return setQuizIndex((prev) => prev + 1);
     }
     if (type === "prev" && prevQuizIndex >= 0) {
@@ -43,7 +43,7 @@ function QuizModal({ courseId, quizSetId, quizzes, open, setOpen }) {
       options: [obj]
     }
 
-    console.log(answer);
+    // console.log(answer);
     const found = answers.find((a) => a.quizId === answer.quizId);
 
     if (found) {
@@ -57,7 +57,7 @@ function QuizModal({ courseId, quizSetId, quizzes, open, setOpen }) {
 
   const submitQuiz = async (event) => {
     try {
-      console.log(answers);
+      // console.log(answers);
       await addQuizAssessment(courseId, quizSetId, answers);
       setOpen(false);
       router.refresh();

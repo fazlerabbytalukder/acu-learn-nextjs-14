@@ -17,7 +17,7 @@ const Module = async ({ params: { courseId, moduleId } }) => {
   // console.log(module);
 
   const lessons = replaceMongoIdInArray(modulet.lessonIds).sort((a, b) => a.order - b.order);
-  console.log(lessons);
+  // console.log(lessons);
 
   return (
     <>

@@ -45,7 +45,7 @@ export const CategoryForm = ({
 
   const onSubmit = async (values) => {
     try {
-      console.log(values);
+      // console.log(values);
       const selectedCategory = options.find(option => option.value === values.value);
       await updateCourse(courseId, { "category": selectedCategory.id });
       toast.success("Course updated");
@@ -85,7 +85,7 @@ export const CategoryForm = ({
           {selectedOptions?.label || "No category"}
         </p>
       )}
-      {console.log({ options })}
+      {/* {console.log({ options })} */}
       {isEditing && (
         <Form {...form}>
           <form
