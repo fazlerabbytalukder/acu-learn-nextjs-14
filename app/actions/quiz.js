@@ -7,10 +7,12 @@ import { Quizset } from "@/model/quizset-model";
 import { Quiz } from "@/model/quizzes-model";
 import { createQuiz, getQuizSetById } from "@/queries/quizzes";
 import { createAssessmentReport } from "@/queries/reports";
+import { dbConnect } from "@/service/mongo";
 import mongoose from "mongoose";
 
 export async function updateQuizSet(quizset, dataToUpdate) {
     try {
+        await dbConnect();
         await Quizset.findByIdAndUpdate(quizset, dataToUpdate);
     } catch (e) {
         throw new Error(e);
@@ -60,6 +62,7 @@ export async function addQuizToQuizSet(quizSetId, quizData) {
 
 export async function deleteQuiz(quizId, quizSetId) {
     try {
+        await dbConnect();
         const quizSet = await Quizset.findById(quizSetId);
         quizSet.quizIds.pull(new mongoose.Types.ObjectId(quizId));
         await Quiz.findByIdAndDelete(quizId);
@@ -71,6 +74,7 @@ export async function deleteQuiz(quizId, quizSetId) {
 
 
 export async function changeQuizSetPublishState(quizSetId) {
+    await dbConnect();
     const quizSet = await Quizset.findById(quizSetId);
     try {
         const res = await Quizset.findByIdAndUpdate(quizSetId, { active: !quizSet.active }, { lean: true });
@@ -82,6 +86,7 @@ export async function changeQuizSetPublishState(quizSetId) {
 
 export async function deleteQuizSet(quizSetId) {
     try {
+        await dbConnect();
         await Quizset.findByIdAndDelete(quizSetId);
     } catch (err) {
         throw new Error(err);
@@ -91,6 +96,7 @@ export async function deleteQuizSet(quizSetId) {
 export async function doCreateQuizSet(data) {
     try {
         data['slug'] = getSlug(data.title);
+        await dbConnect();
         const craetedQuizSet = await Quizset.create(data);
         return craetedQuizSet?._id.toString();
     } catch (e) {
@@ -135,6 +141,7 @@ export async function addQuizAssessment(courseId, quizSetId, answers) {
         assessmentEntry.assessments = assessmentRecord;
         assessmentEntry.otherMarks = 0;
 
+        await dbConnect();
         const assessment = await Assessment.create(assessmentEntry);
         const loggedInUser = await getLoggedInUser();
 
