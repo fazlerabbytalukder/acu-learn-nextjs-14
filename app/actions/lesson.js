@@ -18,6 +18,7 @@ export async function createLesson(data) {
         const createdLesson = await create({ title, slug, moduleId, order });
         //   console.log(createdLesson);
 
+        await dbConnect();
         const modulet = await Module.findById(moduleId);
         modulet.lessonIds.push(createdLesson?._id);
         modulet.save();
@@ -65,6 +66,7 @@ export async function changeLessonPublishState(lessonId) {
 
 export async function deleteLesson(lessonId, moduleId) {
     try {
+        await dbConnect();
         const modulet = await Module.findById(moduleId);
         modulet.lessonIds.pull(new mongoose.Types.ObjectId(lessonId));
         await dbConnect();

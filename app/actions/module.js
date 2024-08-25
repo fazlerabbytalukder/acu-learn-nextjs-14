@@ -38,6 +38,7 @@ export async function reOrderModules(data) {
         console.log(data);
 
         await Promise.all(data.map(async (element) => {
+            await dbConnect();
             await Module.findByIdAndUpdate(element.id, { order: element.position });
         }));
 
