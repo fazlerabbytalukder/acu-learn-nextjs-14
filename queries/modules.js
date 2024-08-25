@@ -27,8 +27,8 @@ export async function getModule(moduleId) {
 
 export async function getModuleBySlug(moduleSlug) {
     try {
-        const module = await Module.findOne({ slug: moduleSlug }).lean();
-        return replaceMongoIdInObject(module);
+        const modulet = await Module.findOne({ slug: moduleSlug }).lean();
+        return replaceMongoIdInObject(modulet);
     } catch (err) {
         throw new Error(err);
     }
