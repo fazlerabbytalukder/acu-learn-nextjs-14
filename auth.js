@@ -3,6 +3,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { authConfig } from "./auth.confiq";
 import { User } from "./model/user-model";
+import { dbConnect } from "./service/mongo";
 
 // async function refreshAccessToken(token) {
 //     try {
@@ -58,6 +59,7 @@ export const {
                 if (credentials == null) return null;
 
                 try {
+                    await dbConnect();
                     const user = await User.findOne({ email: credentials?.email });
                     console.log(user);
 
