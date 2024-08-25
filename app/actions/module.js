@@ -2,6 +2,7 @@
 import { Course } from "@/model/course-model";
 import { Module } from "@/model/module.model";
 import { create } from "@/queries/modules";
+import { dbConnect } from "@/service/mongo";
 import mongoose from "mongoose";
 
 export async function createModule(data) {
@@ -13,6 +14,7 @@ export async function createModule(data) {
 
         const createdModule = await create({ title, slug, course: courseId, order });
 
+        await dbConnect();
         const course = await Course.findById(courseId);
         course.modules.push(createdModule._id);
         course.save();
@@ -68,6 +70,7 @@ export async function changeModulePublishState(moduleId) {
 export async function deleteModule(moduleId, courseId) {
     // console.log("delete", moduleId, courseId);
     try {
+        await dbConnect();
         const course = await Course.findById(courseId);
         course.modules.pull(new mongoose.Types.ObjectId(moduleId));
         course.save();
