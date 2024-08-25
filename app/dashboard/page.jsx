@@ -3,10 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatPrice } from "@/lib/formatPrice";
 import { getCourseDetailsByInstructor } from "@/queries/courses";
 import { getUserByEmail } from "@/queries/users";
+import { dbConnect } from "@/service/mongo";
 import { redirect } from "next/navigation";
 formatPrice;
 
 const DashboardPage = async () => {
+  await dbConnect();
   const session = await auth();
   if (!session?.user) redirect("/login");
 
