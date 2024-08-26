@@ -1,4 +1,5 @@
 import { replaceMongoIdInArray, replaceMongoIdInObject } from "@/lib/convertData";
+import { groupBy } from "@/lib/groupBy";
 import { Category } from "@/model/category-model";
 import { Course } from "@/model/course-model";
 import { Lesson } from "@/model/lesson.model";
@@ -78,7 +79,8 @@ export async function getCourseDetailsByInstructor(instructorId, expand) {
     // console.log(enrollments);
 
 
-    const groupedByCourses = Object.groupBy(enrollments.flat(), ({ course }) => course);
+    // const groupedByCourses = Object.groupBy(enrollments.flat(), ({ course }) => course);
+    const groupedByCourses = groupBy(enrollments.flat(), ({ course }) => course);
 
 
     const totalRevenue = publishedCourses.reduce((acc, course) => {
