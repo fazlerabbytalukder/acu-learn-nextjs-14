@@ -7,12 +7,11 @@ import { Quizset } from "@/model/quizset-model";
 import { Quiz } from "@/model/quizzes-model";
 import { Testimonial } from "@/model/testimonial-model";
 import { User } from "@/model/user-model";
-import { dbConnect } from "@/service/mongo";
 import { getEnrollmentsForCourse } from "./enrollments";
 import { getTestimonialsForCourse } from "./testiomnials";
 
 export async function getCourseList() {
-    await dbConnect();
+    // await dbConnect();
     const courses = await Course.find({ active: true }).select(["title", "subtitle", "thumbnail", "modules", "price", "category", "instructor"]).populate({
         path: "category",
         model: Category
@@ -30,7 +29,7 @@ export async function getCourseList() {
 }
 
 export async function getCourseDetails(id) {
-    await dbConnect();
+    // await dbConnect();
     const course = await Course.findById(id)
         .populate({
             path: "category",
@@ -65,7 +64,7 @@ export async function getCourseDetails(id) {
 }
 
 export async function getCourseDetailsByInstructor(instructorId, expand) {
-    await dbConnect();
+    // await dbConnect();
     const publishedCourses = await Course.find({ instructor: instructorId, active: true }).lean();
 
     const enrollments = await Promise.all(
@@ -105,7 +104,7 @@ export async function getCourseDetailsByInstructor(instructorId, expand) {
     }, 0)) / totalTestimonials.length;
 
     if (expand) {
-        await dbConnect();
+        // await dbConnect();
         const allCourses = await Course.find({ instructor: instructorId }).lean();
         return {
             "courses": allCourses?.flat(),
@@ -125,7 +124,7 @@ export async function getCourseDetailsByInstructor(instructorId, expand) {
 
 export async function create(courseData) {
     try {
-        await dbConnect();
+        // await dbConnect();
         const course = await Course.create(courseData);
         return JSON.parse(JSON.stringify(course));
     } catch (err) {
