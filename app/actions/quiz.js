@@ -51,6 +51,7 @@ export async function addQuizToQuizSet(quizSetId, quizData) {
         const createdQuizId = await createQuiz(transformedQuizData);
         // console.log(createdQuizId);
 
+        await dbConnect();
         const quizSet = await Quizset.findById(quizSetId);
         quizSet.quizIds.push(createdQuizId);
         quizSet.save();
@@ -77,6 +78,7 @@ export async function changeQuizSetPublishState(quizSetId) {
     await dbConnect();
     const quizSet = await Quizset.findById(quizSetId);
     try {
+        await dbConnect();
         const res = await Quizset.findByIdAndUpdate(quizSetId, { active: !quizSet.active }, { lean: true });
         return res.active;
     } catch (err) {

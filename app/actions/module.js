@@ -51,6 +51,7 @@ export async function reOrderModules(data) {
 
 export async function updateModule(moduleId, data) {
     try {
+        await dbConnect();
         await Module.findByIdAndUpdate(moduleId, data)
     } catch (err) {
         throw new Error(err);
@@ -59,8 +60,10 @@ export async function updateModule(moduleId, data) {
 
 export async function changeModulePublishState(moduleId) {
     // console.log("changeModulePublishState", moduleId);
+    await dbConnect();
     const modulet = await Module.findById(moduleId);
     try {
+        await dbConnect();
         const res = await Module.findByIdAndUpdate(moduleId, { active: !modulet.active }, { lean: true });
         return res.active
     } catch (err) {
@@ -75,6 +78,7 @@ export async function deleteModule(moduleId, courseId) {
         const course = await Course.findById(courseId);
         course.modules.pull(new mongoose.Types.ObjectId(moduleId));
         course.save();
+        await dbConnect();
         await Module.findByIdAndDelete(moduleId);
     } catch (err) {
         throw new Error(err);
