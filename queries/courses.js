@@ -7,6 +7,7 @@ import { Quizset } from "@/model/quizset-model";
 import { Quiz } from "@/model/quizzes-model";
 import { Testimonial } from "@/model/testimonial-model";
 import { User } from "@/model/user-model";
+import { dbConnect } from "@/service/mongo";
 import { getEnrollmentsForCourse } from "./enrollments";
 import { getTestimonialsForCourse } from "./testiomnials";
 
